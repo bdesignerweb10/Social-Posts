@@ -1,0 +1,110 @@
+@import "../components/bootstrap/scss/bootstrap";
+
+/* RESET */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+img {
+	max-width: 100%;
+}
+
+body{
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;	
+	background-color: #efefef;
+}
+
+/* Header */
+
+.header{
+	border-bottom: 1px #eb8300 solid;
+	position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.nav-info{
+	color: #000 !important;
+}
+
+.nav-user{
+	color: #eb8300 !important;
+}
+
+/* Default */
+
+.space{
+	margin: 100px 0;
+}
+
+.tbl-default{
+	text-align: center;
+}
+
+.btn-action .btn {
+    width: 95%;
+}
+
+.btns {
+    margin-top: 20px;
+}
+
+/* Modais */
+
+.modal-danger {
+    background-color: red;
+    color: #fff;
+}
+
+.modal-success{
+	background-color: green;
+	color: #fff;
+}
+
+.modal-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.modal-warning{
+	background-color: #ffc107;
+	color: #fff;
+}
+
+/* card */
+
+.card span{
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.btn-default{
+	width: 100%;
+}
+
+/*icons*/
+
+.icon-edit{
+	color: #5bc0de;
+}
+
+.icon-ok{
+	color: green;
+}
+
+.icon-delete,
+.icon-disabled{
+	color: red;
+}

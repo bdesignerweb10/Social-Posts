@@ -1,0 +1,33 @@
+{
+  "name": "erika",
+  "version": "1.0.0",
+  "description": "Banco de Imagens com categorias",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Banco",
+    "Imagens",
+    "Categorias",
+    "Erika",
+    "newUp"
+  ],
+  "author": "Bruno GOmes",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.5",
+    "del": "^4.1.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "components-font-awesome": "^5.4.2",
+    "gulp-php-minify": "^0.1.3",
+    "tether": "^1.4.6"
+  }
+}

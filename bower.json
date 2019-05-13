@@ -1,0 +1,29 @@
+{
+  "name": "erika",
+  "description": "Banco de Imagens com categorias",
+  "main": "gulpfile.js",
+  "authors": [
+    "Bruno GOmes"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Banco",
+    "Imagens",
+    "Categorias",
+    "Erika",
+    "newUp"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./src/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1"
+  }
+}
