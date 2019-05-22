@@ -1,3 +1,6 @@
+<?php
+	require_once('acts/connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,12 +26,13 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css">
 	<link rel="stylesheet" type="text/css" href="css/textext.plugin.autocomplete.css">
 	<link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+	<link rel="stylesheet" type="text/css" href="css/amsify.suggestags.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 	<header class="header">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <a class="navbar-brand" href="#"><img src="../img/Logo-Cartoleirao.png" width="40" ></a>
+		  <a class="navbar-brand" href="#"><img src="../img/logo.png" width="40" ></a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -36,7 +40,7 @@
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item active">
-		        <a class="nav-link" href="home.php">Inicio <span class="sr-only">(current)</span></a>
+		        <a class="nav-link" href="#"></a>
 		      </li>      
 		      <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,8 +56,8 @@
 		          Categorias
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="gerenciamento-categorias.php">Nova Categoria</a>
-		          <a class="dropdown-item" href="gerenciamento-categorias.php">Gerenciar Categorias</a>          
+		          <a class="dropdown-item" href="gerenciamento-categorias.php?novo">Nova Categoria</a>
+		          <a class="dropdown-item" href="gerenciamento-categorias.php?list">Gerenciar Categorias</a>          
 		        </div>
 		      </li>		      
 		      <li class="nav-item dropdown">
@@ -64,17 +68,26 @@
 		          <a class="dropdown-item" href="gerenciamento-usuarios.php">Novo Usuário</a>		          
 		          <a class="dropdown-item" href="#">Gerenciar Usuários</a> 		                   
 		        </div>
-		      </li>
+		      </li>		        
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Planos
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="gerenciamento-planos.php">Novo Plano</a>
+		          <a class="dropdown-item" href="gerenciamento-planos.php">Gerenciar Planos</a>          
+		        </div>
+		      </li>	
 		      <li class="nav-item">
 		        <a class="nav-link" href="recados.php">Recados</a>
-		      </li>   
+		      </li> 
 		      <li class="nav-item">
 		        <a class="nav-link" href="configuracoes.php">Configurações</a>
 		      </li>
 		    </ul>
 		    <ul class="navbar-nav mr-auto">
 		    	<li class="nav-item">
-		        	<a class="nav-link nav-info" href="#">Olá Bruno Gomes, o seu plano é Free</a>
+		        	<a class="nav-link nav-info" href="#">Olá Bruno Gomes, o seu plano é Top Stander</a>
 		      	</li>
 		    	<li class="nav-item dropdown">
 		        <a class="nav-link nav-user dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

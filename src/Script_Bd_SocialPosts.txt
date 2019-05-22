@@ -1,0 +1,22 @@
+CREATE TABLE tbl_categoria
+(
+	id_categoria         int primary key auto_increment not null,
+	nome                 varchar(255) not null,
+	descricao            text not null,
+	ativo                boolean not null 
+);
+
+
+CREATE TABLE tbl_imagens
+(
+	id_imagem            int primary key auto_increment not null,
+	nome                 varchar(255) not null,
+	imagem               varchar(255) not null,
+	descricao            text,
+	tags                 varchar(255) not null,
+	ativo                boolean not null,
+    id_cat               int not null
+);
+
+ALTER TABLE tbl_imagens
+ ADD FOREIGN KEY (id_cat) REFERENCES tbl_categoria(id_categoria);

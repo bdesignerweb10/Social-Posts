@@ -1,7 +1,7 @@
 <?php
 	require_once('header.php');
 ?> 
-<main>
+<main class="maintable">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 space">
@@ -12,7 +12,7 @@
 			  <div class="row btn-action">		
 				  <div class="col-sm-8"></div>
 				  <div class="col-sm-4">
-				  	<button type="button" class="btn btns btn-lg btn-success"><i class="fas fa-plus"></i> Novo Usuário</button>
+				  	<button type="button" class="btn btns btn-lg btn-success" id="btn-add-usuario"><i class="fas fa-plus"></i> Novo Usuário</button>
 				  </div><!-- col-sm-4 -->	
 			  </div><!-- row -->	  
 			  <div class="card-body">
@@ -134,71 +134,76 @@
 	</div>
 </main>
 
-<main>
+<main class="mainform">
 	<div class="container">
-		<div class="card spacing">
-			<div class="card-header">
-				<span>Gerenciamento de usuários</span>			    
-			</div>
-			<div class="row btn-action">		
-				<div class="col-sm-8"></div>
-				<div class="col-sm-4">
-					<button type="button" class="btn btns btn-lg btn-secondary"><i class="fas fa-arrow-left"></i> Voltar</button>
-				</div><!-- col-sm-4 -->	
-			</div><!-- row -->	  
-			<div class="card-body">
-				<form>
-					<div class="form-row">
-					    <div class="form-group col-md-1">
-					      <label for="user-id">ID</label>
-					      <input type="number" class="form-control" name="user-id" id="user-id" disabled>
-					    </div>
-					    <div class="form-group col-md-4">
-					      <label for="name">Nome</label>
-					      <input type="text" class="form-control" name="name" id="name" placeholder="Informe o nome">
-					    </div>
-					    <div class="form-group col-md-4">
-					      <label for="email-cart">E-mail (Usuário)</label>
-					      <input type="email" class="form-control" name="email" id="email" placeholder="Informe o e-mail">
-					    </div>
-					    <div class="form-group col-md-3">
-					      <label for="cpf-cnpj">CPF / CNPJ</label>
-					      <input type="number" class="form-control" name="cpf-cnpj" id="cpf-cnpj" placeholder="Informe o CPF ou CNPJ">
-					    </div>	
-					    <div class="form-group col-md-2">
-					      <label for="phone">Telefone</label>
-					      <input type="number" class="form-control" name="phone" id="phone" placeholder="Informe o telefoneo">
-					    </div>				    
-					    <div class="form-group col-md-3">
-					      <label for="plan">Plano</label>
-					      <select id="plan" class="form-control">
-					        <option selected>Selecione o tipo de acesso</option>
-					        <option>Administrador</option>
-					        <option>Top</option>
-					        <option>Full</option>
-					      </select>
-					    </div>
-					    <div class="form-group col-md-3">
-					      <label for="password">Senha</label>
-					      <input type="password" class="form-control" name="password" id="password" placeholder="Informe a senha">
-					    </div>
-					    <div class="form-group col-md-2">
-					      <label for="inputState">Usuário ativo?</label>
-					      <select id="inputState" class="form-control">					        
-					        <option>Sim</option>
-					        <option>Não</option>
-					      </select>
-					    </div>											    
-			       	</div><!-- form-row -->
-				</form>
-				<div class="row btn-action-2">
-					<div class="col-sm-8"></div>
-					  	<div class="col-sm-4">
-					  		<button type="submit" class="btn btn-default btn-lg btn-primary" data-toggle="modal" data-target="#createuser"><i class="far fa-save"></i> Salvar usuário</button>
-					  	</div>					  	
-				  	</div>
-				</div>			
-		</div><!-- card -->		
+		<div class="row">
+			<div class="col-sm-12 space">
+				<div class="card">
+					<div class="card-header">
+						<span>Novo usuário</span>			    
+					</div>
+					<div class="row btn-action">		
+						<div class="col-sm-8"></div>
+						<div class="col-sm-4">
+							<button type="button" class="btn btns btn-lg btn-secondary" id="btn-voltar-usuario"><i class="fas fa-arrow-left"></i> Voltar</button>
+						</div><!-- col-sm-4 -->	
+					</div><!-- row -->	  
+					<div class="card-body">
+						<form>
+							<div class="form-row">
+							    <div class="form-group col-md-1">
+							      <label for="user-id">ID</label>
+							      <input type="number" class="form-control" name="user-id" id="user-id" disabled>
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="name">Nome</label>
+							      <input type="text" class="form-control" name="name" id="name" placeholder="Informe o nome">
+							    </div>
+							    <div class="form-group col-md-4">
+							      <label for="email-cart">E-mail (Usuário)</label>
+							      <input type="email" class="form-control" name="email" id="email" placeholder="Informe o e-mail">
+							    </div>
+							    <div class="form-group col-md-3">
+							      <label for="cpf-cnpj">CPF / CNPJ</label>
+							      <input type="number" class="form-control" name="cpf-cnpj" id="cpf-cnpj" placeholder="Informe o CPF ou CNPJ">
+							    </div>	
+							    <div class="form-group col-md-2">
+							      <label for="phone">Telefone</label>
+							      <input type="number" class="form-control" name="phone" id="phone" placeholder="Informe o telefoneo">
+							    </div>				    
+							    <div class="form-group col-md-3">
+							      <label for="plan">Plano</label>
+							      <select id="plan" class="form-control">
+							        <option selected>Selecione o tipo de acesso</option>
+							        <option>Administrador</option>
+							        <option>Top</option>
+							        <option>Full</option>
+							      </select>
+							    </div>
+							    <div class="form-group col-md-3">
+							      <label for="password">Senha</label>
+							      <input type="password" class="form-control" name="password" id="password" placeholder="Informe a senha">
+							    </div>
+							    <div class="form-group col-md-2">
+							      <label for="inputState">Usuário ativo?</label>
+							      <select id="inputState" class="form-control">					        
+							        <option>Sim</option>
+							        <option>Não</option>
+							      </select>
+							    </div>											    
+					       	</div><!-- form-row -->
+						</form>
+						<div class="row btn-action-2">
+							<div class="col-sm-8"></div>
+					  			<div class="col-sm-4">
+					  				<button type="submit" class="btn btn-default btn-lg btn-primary" id="btn-salvar-usuario" data-toggle="modal" data-target="#createuser"><i class="far fa-save"></i> Salvar usuário</button>
+					  			</div>					  	
+				  			</div>
+						</div>			
+					</div><!-- card -->	
+				</div>
+			</div><!-- col-sm-12-->
+		</div><!-- row -->				
 	</div><!-- container -->
 
 	<!-- Modal Criação do usuário via portal -->
