@@ -15,13 +15,12 @@
 
 					$id = $_GET['id']; 
 
-			    	$qry_imagem = $conn->query("SELECT id_imagem, tbl_imagens.nome as nome_img, imagem, tbl_imagens.descricao as descricao_img, tags, tbl_imagens.ativo as ativo_img, tbl_categoria.nome as categoria FROM tbl_imagens 
-INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHERE id_imagem = $id") or trigger_error("27005 - " . $conn->error);
+			    	$qry_imagem = $conn->query("SELECT id_imagem, tbl_imagens.nome as nome_img, imagem, tbl_imagens.descricao as descricao_img, tags, tbl_imagens.ativo as ativo_img, tbl_categoria.id_categoria as categoria FROM tbl_imagens INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHERE id_imagem = $id") or trigger_error("27005 - " . $conn->error);
 
 					if ($qry_imagem && $qry_imagem->num_rows > 0) {
 						$dados = "";
 		    			while($img = $qry_imagem->fetch_object()) {
-		    				$dados = '{"id" : "' . $img->id_imagem . '", "title_img" : "' . $img->nome_img . '", "categoria" : "' . $img->categoria . '","ativo" : "' . $img->ativo_img . '","anexo-img" : "' . $img->imagem . '","description_img" : "' . $img->descricao_img . '","tag_img" : "' . $img->tags . '"}';
+		    				$dados = '{"id" : "' . $img->id_imagem . '", "title_img" : "' . $img->nome_img . '", "categoria" : "' . $img->categoria . '","ativo" : "' . $img->ativo_img . '","anexo_img" : "' . $img->imagem . '","description_img" : "' . $img->descricao_img . '","tag_img" : "' . $img->tags . '"}';
 		    			}
 
 						echo '{"succeed": true, "dados": ' . $dados . '}';
@@ -61,44 +60,29 @@ INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHER
 							exit();
 						}
 						else {
-							
-							if(isset($_FILES['img'])) {
+							// aqui é onde faz as paradas da imagem
+							if(isset($_FILES['anexo-img'])) {
 
-								if($_FILES['img']['type'] != "image/png") {
+								if($_FILES['anexo-img']['type'] != "image/png") {
 					        		throw new Exception("Imagem enviada precisa ser tipo PNG!");
 								}
 							    
-							    $imgsize = getimagesize($_FILES['img']['tmp_name']);
+							    $imgsize = getimagesize($_FILES['anexo-img']['tmp_name']);
 
 							    if($imgsize[0] < 150) {
 					        		throw new Exception("Tamanho mínimo da largura da imagem precisa ser 150px! Favor escolher outra imagem e enviar novamente!");
 							    }
 
-							    $pathImagem = "../img/bancoimagens/" . ($_FILES['img']['name']);
+							    $pathImagem = "../img/bancoimagens/" . ($_FILES['anexo-img']['name']);
 							    
+							    if(is_uploaded_file($_FILES['anexo-img']['tmp_name']) || $_FILES['anexo-img']['error'] !== UPLOAD_ERR_OK) {
+							   		move_uploaded_file($_FILES['anexo-img']['tmp_name'], $pathImagem);
+							    }
 
-							    if(is_uploaded_file($_FILES['img']['tmp_name']) || $_FILES['img']['error'] !== UPLOAD_ERR_OK) {
-							        $ratio = $imgsize[0] / $imgsize[1];
-
-								    $width = 150;
-								    $height = 150 / $ratio;	
-
-									$src = imagecreatefrompng($_FILES['img']['tmp_name']);
-									
-									$dst = imagecreatetruecolor($width, $height);
-								    imagealphablending($dst, false);
-								    imagesavealpha($dst, true);
-
-									imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
-									imagepng($dst, $pathImagem, 0);
-									imagedestroy($dst);
-									imagedestroy($src);
-							    }							   
+								$imagem = $_FILES['anexo-img']['name'];	
 							}
-							if($_FILES['img'] == ''){
-								$imagem;
-							} else{
-							$imagem = $_FILES['img']['name'];	
+							else {
+								$imagem = "";
 							}
 
 							$titulo = $_POST["title-img"];
@@ -129,6 +113,7 @@ INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHER
 					echo '{"succeed": false, "errno": 27007, "title": "Erro ao salvar os dados!", "erro": "Ocorreu um erro ao salvar os dados: ' . $e->getMessage() . '"}';
 				}
 		        break;
+
 	        case 'edit':
 				try {
 					$conn->autocommit(FALSE);
@@ -160,45 +145,30 @@ INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHER
 							exit();
 						}
 						else {
-							if(isset($_FILES['img'])) {
+							if(isset($_FILES['anexo-img'])) {
 
-								if($_FILES['img']['type'] != "image/png") {
+								if($_FILES['anexo-img']['type'] != "image/png") {
 					        		throw new Exception("Imagem enviada precisa ser tipo PNG!");
 								}
 							    
-							    $imgsize = getimagesize($_FILES['img']['tmp_name']);
+							    $imgsize = getimagesize($_FILES['anexo-img']['tmp_name']);
 
 							    if($imgsize[0] < 150) {
 					        		throw new Exception("Tamanho mínimo da largura da imagem precisa ser 850px! Favor escolher outra imagem e enviar novamente!");
 							    }
 
-							    $pathImagem = "../img/bancoimagens/" . ($_FILES['img']['name']);
+							    $pathImagem = "../img/bancoimagens/" . ($_FILES['anexo-img']['name']);
 							    
 
-							    if(is_uploaded_file($_FILES['img']['tmp_name']) || $_FILES['img']['error'] !== UPLOAD_ERR_OK) {
-							        $ratio = $imgsize[0] / $imgsize[1];
+							    if(is_uploaded_file($_FILES['anexo-img']['tmp_name']) || $_FILES['anexo-img']['error'] !== UPLOAD_ERR_OK) {
+							   		move_uploaded_file($_FILES['anexo-img']['tmp_name'], $pathImagem);
+							    }	
 
-								    $width = 150;
-								    $height = 150 / $ratio;	
-
-									$src = imagecreatefrompng($_FILES['img']['tmp_name']);
-									
-									$dst = imagecreatetruecolor($width, $height);
-								    imagealphablending($dst, false);
-								    imagesavealpha($dst, true);
-
-									imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
-									imagepng($dst, $pathImagem, 0);
-									imagedestroy($dst);
-									imagedestroy($src);
-							    }							   
+								$imagem = ", imagem = '" . $_FILES['anexo-img']['name'] . "'";	
 							}
-
-							/*if($_FILES['img'] == ''){
-								$imagem = $_FILES['img']['name'];
-							} else{
-								$imagem = $_FILES['img']['name'];	
-							}*/
+							else{
+								$imagem = "";
+							}
 
 							$titulo = $_POST["title-img"];
 							$categoria = $_POST["categoria"];
@@ -208,10 +178,12 @@ INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHER
 							
 
 							$qry_imagem = "UPDATE tbl_imagens
-											  SET nome = '" . $titulo . "',									   imagem = '" . $imagem . "',	      
-											      descricao = '" . $descricao . "',							    tags = '" . $tags . "',
+											  SET nome = '" . $titulo . "',	
+											      descricao = '" . $descricao . "',					
+											      tags = '" . $tags . "',
 											      ativo = '" . $ativo . "',		
-											     id_cat = " . $categoria . "
+											      id_cat = " . $categoria . "	  
+											  	  " . $imagem . "    
 											WHERE id_imagem = $id";
 							if ($conn->query($qry_imagem) === TRUE) {
 								$conn->commit();
@@ -232,6 +204,7 @@ INNER JOIN tbl_categoria on tbl_imagens.id_cat = tbl_categoria.id_categoria WHER
 					echo '{"succeed": false, "errno": 27013, "title": "Erro ao salvar os dados!", "erro": "Ocorreu um erro ao salvar os dados: ' . $e->getMessage() . '"}';
 				}
 		        break;
+		        
 		    case 'del':
 			try {
 				$conn->autocommit(FALSE);

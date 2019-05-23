@@ -60,11 +60,6 @@
 		<script src="js/jquery.tablesorter.min.js" type="text/javascript"></script>
 		<script src="js/jquery.mask.js"></script>
 		<script src="js/jquery.amsify.suggestags.js"></script>
-		<script>
-			$('input[name="tag-img"]').amsifySuggestags({
-				type : 'amsify'				
-			});	
-		</script>
 		<?php if($conn) $conn->close(); ?>
 	</body>
 </html>

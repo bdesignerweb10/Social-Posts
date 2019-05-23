@@ -133,6 +133,9 @@ where tbl_imagens.ativo = 0 order by tbl_imagens.nome") or trigger_error($conn->
 						    <div class="form-group col-sm-7">
 							    <label for="anexo-img">Anexo da imagem</label>
 							    <input type="file" class="form-control-file" name="anexo-img" id="anexo-img">
+							</div>
+							<div class="form-group col-sm-5">
+							    <img id="img-form" src="img/bancoimagens/">
 							</div>										
 						    <div class="form-group col-md-12">
 							  <label for="description-img">Descrição da imagem</label>

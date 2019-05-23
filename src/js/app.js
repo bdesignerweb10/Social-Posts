@@ -268,7 +268,12 @@ $(function() {
         $('#anexo-img').val('');
         $('#description-img').val('');
         $('#tag-img').val('');
-    	   		    		
+        $('#img-form').attr('src', '');
+        $('#img-form').hide();
+
+        $('input[name="tag-img"]').amsifySuggestags({
+            type : 'amsify'             
+        }); 		    		
     });
 
     $('#btn-voltar-imagem').click(function(e) {
@@ -310,7 +315,11 @@ $(function() {
         formData.append('title-img', $('#title-img').val());
         formData.append('categoria', $('#categoria').val());
         formData.append('ativo', $('#ativo').val());            
-        formData.append('anexo-img', $('#anexo-img').val()); 
+        //formData.append('anexo-img', $('#anexo-img').val()); 
+        
+        formData.append('anexo-img', $('#anexo-img')[0].files[0]);
+
+
         formData.append('description-img', $('#description-img').val()); 
         formData.append('tag-img', $('#tag-img').val()); 
         
@@ -405,14 +414,20 @@ $(function() {
 
                         //var d = new Date(retorno.dados.data * 1000);
 
+
                         $('#id').val(retorno.dados.id);
                         $('#title-img').val(retorno.dados.title_img);                                            
                         $('#categoria').val(retorno.dados.categoria);                       
                         $('#ativo').val(retorno.dados.ativo);  
                         //$('#anexo-img').val(retorno.dados.anexo_img); 
-                        $('#anexo-img').prop("src", "img/bancoimagens/" + retorno.anexo_img); 
+                        $('#img-form').attr("src", "img/bancoimagens/" + retorno.dados.anexo_img); 
                         $('#description-img').val(retorno.dados.description_img);  
-                        $('#tag-img').val(retorno.dados.tag_img);                    
+                        $('#tag-img').val(retorno.dados.tag_img);
+                        $('#img-form').show();
+
+                        $('input[name="tag-img"]').amsifySuggestags({
+                            type : 'amsify'             
+                        });                 
                     }
                     else {
                         $('.mainform').hide();
